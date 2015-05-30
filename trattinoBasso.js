@@ -46,14 +46,14 @@ function find(collection, callback){
 		for(var i = 0, result; i<collection.length; i++){
 			if(callback(collection[i])){
 				return collection[i];
-				break;
+				//break;
 			}
 		}
 	} else {
 		for(var key in collection){
 			if(callback(collection[key])){
 				return collection[key];
-				break;
+				//break;
 			}
 		}
 	}
