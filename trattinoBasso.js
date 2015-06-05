@@ -207,3 +207,32 @@ function once(fn){
 		}
 	}
 }
+
+// Memoizes a given function by caching the computed result. Useful for speeding up slow-running computations.
+// The chaching sistem works by concatenating the arguments in order to create a unique key... 
+// of course this solution is pretty crappy (for example if working with recursive functions or if arguments are arrays or objects)
+
+function memoize(func){
+	var results = {};
+	return function(){
+		var args = Array.prototype.slice.call(arguments);
+		var hash = args.reduce(function(hash, nextArg){
+			return hash+nextArg;
+		}, '');
+		if(results[hash] === undefined){
+			var result = func.apply(this, args);
+			results[hash] = result;
+		}
+		console.log(results);
+		return results[hash];
+	}
+}
+
+
+
+
+
+
+
+
+
